@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "duplicate-image-finder"
+version = "1.0.0"
+description = "Find exact and visually similar images safely from the command line."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = ["Pillow>=10.0", "ImageHash>=4.3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+duplicate-images = "duplicate_image_finder.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["duplicate_image_finder*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+extend-exclude = [".verify_deps"]
+
